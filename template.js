@@ -151,7 +151,7 @@ Object.defineProperties( module.exports, {
     value: 'Create a Composer, Component, Node.js shared library.',
     enumerable: true
   },
-  nots: {
+  notes: {
     value: '_Project name_ shoul not contain "lib" as it will prefixed automatically.',
     enumerable: true
   },
