@@ -1,0 +1,6 @@
+{
+  "scripts/name.js": "scripts/{%= name %}.js",
+  "styles/name.less": "styles/{%= name %}.less",
+  "bin/name.js": "bin/{%= name %}.js",
+  "lib/name.php": "lib/{%= name %}.php"
+}
