@@ -86,8 +86,8 @@ function Create( options ) {
         
     }],
     
-    // Should update composer.
-    composer: [ 'scaffold', function( done, report ) {
+    // Should update composer, but wait for NPM to finish.
+    composer: [ 'npm', 'scaffold', function( done, report ) {
       self.log( 'Installing Composer...' );
       
       spawn( 'php', [ self.get( 'composerPath' ), 'install', '--prefer-source' ], {
@@ -100,7 +100,6 @@ function Create( options ) {
         done();
       });
             
-
     }],
     
     // Should initialize repository, create a GitHub Wiki and add as a submodule to static/wiki

@@ -22,6 +22,8 @@
  */
 function Template( grunt, init, done) {
 
+  var deepExtend = require( 'deep-extend' );
+  
   var _extend = grunt.util._.extend;
 
   init.process( {type: 'module'}, [
@@ -79,7 +81,11 @@ function Template( grunt, init, done) {
           "url": "http://UsabilityDynamics.com"
         }
       ],
-      "dependencies": {},
+      "dependencies": {
+        "findup-sync": "^0.1.3",
+        "load-grunt-tasks": "^0.6.0",
+        "lodash": "^2.4.1"        
+      },
       "devDependencies": {
         "grunt": "^0.4.5",
         "grunt-config": "^0.2.0",
@@ -96,8 +102,9 @@ function Template( grunt, init, done) {
         "grunt-phpcs": "~0.2.2",
         "grunt-phpunit": "~0.3.3",
         "grunt-shell": "~0.6.0",
-        "mocha": "^1.20.1",
+        "grunt-scaffold-module": "git://github.com/UsabilityDynamics/grunt-scaffold-module",
         "grunt-scaffold-library": "UsabilityDynamics/grunt-scaffold-library",
+        "mocha": "^1.20.1",
         "should": "~4.0.4"
       },
       "repo": {
@@ -134,16 +141,12 @@ function Template( grunt, init, done) {
         { 
           "type": "composer", 
           "url": "http://repository.usabilitydynamics.com" 
-        },
-        { 
-          "type": "composer", 
-          "url": "http://rpm.udx.io" 
-        }        
+        }
       ],
       "minimum-stability": "dev",
       "homepage": props.homepage,
       "authors": props.authors,
-      "autoload": { "classmap": "lib" },
+      "autoload": { "classmap": [ "lib" ] },
       "extra": {
         "component": component
       },

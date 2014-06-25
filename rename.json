@@ -2,5 +2,6 @@
   "static/scripts/name.js": "static/scripts/{%= name %}.js",
   "static/styles/name.less": "static/styles/{%= name %}.less",
   "lib/class-name.php": "lib/class-{%= name %}.php",
-  "lib/class-name-utility.php": "lib/class-{%= name %}-utility.php"
+  "lib/class-name-utility.php": "lib/class-{%= name %}-utility.php",
+  "test/name.js": "test/{%= name %}.js"
 }
