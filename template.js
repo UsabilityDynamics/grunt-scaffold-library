@@ -37,20 +37,31 @@ function Template( grunt, init, done) {
 
   ], function( err, props ) {
 
+    var _package = deepExtend( require( './root/package.json' ), props );
+    //var _composer = deepExtend( require( './root/composer.json' ) );
+    
     props = _extend( props, {
       "keywords": [ "library", "component", "composer" ],
       "private": true,
       "directories": {
         "test": "./test",
-        "templates": "./templates",
-        "scripts": "./scripts",
+        "templates": "./static/templates",
+        "scripts": "./static/scripts",
         "vendor": "./vendor",
-        "images": "./images",
-        "styles": "./styles",
+        "images": "./static/images",
+        "styles": "./static/styles",
         "doc": "./static/codex",
-        "bin": "./bin",
         "lib": "./lib"
       },
+      "publishConfig": {
+        "registry": "http://rpm.udx.io"
+      },  
+      "scripts": {
+        "test": "mocha --ui exports --reporter list",
+        "start": "grunt start",
+        "publish": "grunt publish",
+        "prepublish": "grunt prepublish"
+      },      
       "contributors": [
         {
           "name": "Anton Korotkov",
@@ -70,18 +81,24 @@ function Template( grunt, init, done) {
       ],
       "dependencies": {},
       "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-config": "^0.2.0",
+        "grunt-contrib-clean": "~0.5.0",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-jscs": "^0.1.8",
+        "grunt-contrib-less": "~0.8.3",
+        "grunt-contrib-symlink": "~0.2.0",
+        "grunt-contrib-uglify": "~0.2.4",
+        "grunt-contrib-watch": "~0.5.3",
+        "grunt-contrib-yuidoc": "~0.5.0",
         "grunt-markdown": "~0.4.0",
-        "grunt-contrib-symlink": "*",
-        "grunt-contrib-yuidoc": "*",
-        "grunt-contrib-watch": "*",
-        "grunt-contrib-less": "*",
-        "grunt-contrib-concat": "*",
-        "grunt-contrib-clean": "*",
-        "grunt-jscoverage": "0.0.3",
-        "grunt-shell": "*",
-        "mocha": "*",
-        "should": "*",
-        "grunt": "~0.4.1"
+        "grunt-mocha-test": "~0.11.0",
+        "grunt-phpcs": "~0.2.2",
+        "grunt-phpunit": "~0.3.3",
+        "grunt-shell": "~0.6.0",
+        "mocha": "^1.20.1",
+        "grunt-scaffold-library": "UsabilityDynamics/grunt-scaffold-library",
+        "should": "~4.0.4"
       },
       "repo": {
         type: 'git',
@@ -113,11 +130,20 @@ function Template( grunt, init, done) {
       "version": props.version,
       "description": props.description,
       "require": {},
-      "repositories": [{ "type": "composer", "url": "http://udx.io" }],
+      "repositories": [
+        { 
+          "type": "composer", 
+          "url": "http://repository.usabilitydynamics.com" 
+        },
+        { 
+          "type": "composer", 
+          "url": "http://rpm.udx.io" 
+        }        
+      ],
       "minimum-stability": "dev",
       "homepage": props.homepage,
       "authors": props.authors,
-      "autoload": { "files": [ "lib/" + props.name + ".php" ] },
+      "autoload": { "classmap": "lib" },
       "extra": {
         "component": component
       },

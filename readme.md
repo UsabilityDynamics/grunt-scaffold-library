@@ -36,5 +36,5 @@ console.log( project.features );
 ```
 
 ```
-rm -rf *.* examples lib node_modules static test && scaffold-library create
+rm -rf *.* examples lib node_modules static test vendor && scaffold-library create
 ```
