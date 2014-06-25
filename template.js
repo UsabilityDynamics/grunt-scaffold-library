@@ -62,7 +62,7 @@ function Template( grunt, init, done) {
         "test": "mocha --ui exports --reporter list",
         "start": "grunt start",
         "publish": "grunt publish",
-        "prepublish": "grunt prepublish"
+        "prepublish": "grunt publish"
       },      
       "contributors": [
         {
@@ -102,7 +102,7 @@ function Template( grunt, init, done) {
         "grunt-phpcs": "~0.2.2",
         "grunt-phpunit": "~0.3.3",
         "grunt-shell": "~0.6.0",
-        "grunt-scaffold-module": "git://github.com/UsabilityDynamics/grunt-scaffold-module",
+        "grunt-scaffold-module": "UsabilityDynamics/grunt-scaffold-module",
         "grunt-scaffold-library": "UsabilityDynamics/grunt-scaffold-library",
         "mocha": "^1.20.1",
         "should": "~4.0.4"
