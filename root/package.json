@@ -34,10 +34,9 @@
     "grunt-phpcs": "~0.2.2",
     "grunt-phpunit": "~0.3.3",
     "grunt-shell": "~0.6.0",
-    "mocha": "^1.20.1",
     "grunt-scaffold-library": "UsabilityDynamics/grunt-scaffold-library",
-    "should": "~4.0.4",
-    "yuidocjs": "^0.3.50"
+    "mocha": "^1.20.1",
+    "should": "~4.0.4"
   },
   "dependencies": {
     "findup-sync": "^0.1.3",
