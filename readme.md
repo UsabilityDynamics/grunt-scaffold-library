@@ -35,3 +35,6 @@ var project = require( 'grunt-scaffold-library' ).getProject();
 console.log( project.features );
 ```
 
+```
+rm -rf *.* examples lib node_modules static test && scaffold-library create
+```

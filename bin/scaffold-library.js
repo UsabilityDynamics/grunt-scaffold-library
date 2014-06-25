@@ -7,14 +7,15 @@ require( 'veneer-terminal' ).create( function scaffoldTerminal( error ) {
 
   // Configure Terminal Settings.
   this.set({
-    name: 'scaffold-module',
+    name: 'scaffold-library',
     version: this.get( 'package.version' ),
     description: this.get( 'package.description' ),
-    path: path.dirname( findUp( 'package.json', { cwd: __dirname } ) )
+    path: path.dirname( findUp( 'package.json', { cwd: __dirname } ) ),
+    composerPath: path.join( __dirname, 'composer.phar' )
   });  
 
   // Accepted Arguments.
-  this.option( '-p, --path <path>', 'Path to target directory for scaffolding.', process.cwd() );
+  this.option( '-d, --directory <directory>', 'Path to target directory for scaffolding.', process.cwd() );
   this.option( '-p, --project <project>', 'Path or URL of project.yml file.' );
   this.option( '-a, --acceptance <acceptance>', 'Path or URL of acceptance.yml file.' );
   
@@ -30,7 +31,7 @@ require( 'veneer-terminal' ).create( function scaffoldTerminal( error ) {
  *
  */
 function Validate( options ) {  
-  this.write( 'Validating ' + options.parent.path );
+  this.write( 'Validating ' + options.parent.directory );
 }
 
 /**
@@ -38,13 +39,13 @@ function Validate( options ) {
  *
  */
 function Update( options ) {
-  this.write( 'Updating ' + options.parent.path );
+  this.write( 'Updating ' + options.parent.directory );
 }
 
 /**
  * Create Scaffold
  *
- * @todo Create options.parent.path if it does not exist.
+ * @todo Create options.parent.directory if it does not exist.
  */
 function Create( options ) {
 
@@ -59,7 +60,7 @@ function Create( options ) {
       
       spawn( 'grunt-init', [ self.get( 'path' ), '--no-color' ], {
         end: process.env,
-        cwd: options.parent.path,
+        cwd: options.parent.directory,
         stdio: 'inherit',
         encoding: 'utf8'
       }).on( 'close', function( code, signal ) {
@@ -75,7 +76,7 @@ function Create( options ) {
       
       spawn( 'npm', [ 'install' ], {
         end: process.env,
-        cwd: options.parent.path,
+        cwd: options.parent.directory,
         stdio: 'inherit',
         encoding: 'utf8'
       }).on( 'close', function() {
@@ -87,14 +88,27 @@ function Create( options ) {
     
     // Should update composer.
     composer: [ 'scaffold', function( done, report ) {
-      self.log( 'Updating Composer... (Not Implemented)' );
-      done();      
+      self.log( 'Installing Composer...' );
+      
+      spawn( 'php', [ self.get( 'composerPath' ), 'install', '--prefer-source' ], {
+        end: process.env,
+        cwd: options.parent.directory,
+        stdio: 'inherit',
+        encoding: 'utf8'
+      }).on( 'close', function() {
+        self.log( 'Composer installed.' );
+        done();
+      });
+            
+
     }],
     
     // Should initialize repository, create a GitHub Wiki and add as a submodule to static/wiki
     github: [ 'npm', 'composer', function( done, report ) {
-      self.log( 'Setting up GitHub repository. (Not Implemented)' );
-      done();      
+      // self.log( 'Setting up GitHub repository. (Not Implemented)' );
+      
+      done();
+              
     }]
     
   });
