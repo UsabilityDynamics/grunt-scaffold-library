@@ -1,10 +1,10 @@
 {
   "name": null,
-  "version": "0.1.1",
+  "version": null,
   "type": "library",
   "license": "MIT",
-  "description": "Modules Manager.",
-  "homepage": "https://github.com/UsabilityDynamics/lib-module",
+  "description": null,
+  "homepage": null,
   "keywords": [
     "module",
     "manager"
@@ -39,8 +39,20 @@
     "usabilitydynamics/lib-wp-phpunit": "master",
     "codeclimate/php-test-reporter": "dev-master"
   },
+  "config": {
+    "vendor-dir": "vendor/libraries",
+    "bin-dir": "vendor/bin",
+    "optimize-autoloader": true
+  },
   "extra": {
-    "component": {}
+    "component": {},
+    "acceptance": {},
+    "installer-paths": {
+      "vendor/libraries/{$name}": [ "type:wordpress-library" ],
+      "vendor/modules/{$name}":   [ "type:wordpress-module" ],
+      "vendor/plugins/{$name}":   [ "type:wordpress-plugin" ],
+      "vendor/themes/{$name}":    [ "type:wordpress-theme" ]
+    }
   },  
   "autoload": {
     "classmap": [ "lib" ]

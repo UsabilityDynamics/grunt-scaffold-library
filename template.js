@@ -147,6 +147,21 @@ function Template( grunt, init, done) {
       "homepage": props.homepage,
       "authors": props.authors,
       "autoload": { "classmap": [ "lib" ] },
+      "config": {
+        "vendor-dir": "vendor/libraries",
+        "bin-dir": "vendor/bin",
+        "optimize-autoloader": true
+      },
+      "extra": {
+        "component": {},
+        "acceptance": {},
+        "installer-paths": {
+          "vendor/libraries/{$name}": [ "type:wordpress-library" ],
+          "vendor/modules/{$name}":   [ "type:wordpress-module" ],
+          "vendor/plugins/{$name}":   [ "type:wordpress-plugin" ],
+          "vendor/themes/{$name}":    [ "type:wordpress-theme" ]
+        }
+      },        
       "extra": {
         "component": component
       },
