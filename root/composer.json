@@ -1,0 +1,48 @@
+{
+  "name": null,
+  "version": "0.1.1",
+  "type": "library",
+  "license": "MIT",
+  "description": "Modules Manager.",
+  "homepage": "https://github.com/UsabilityDynamics/lib-module",
+  "keywords": [
+    "module",
+    "manager"
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://repository.usabilitydynamics.com"
+    }
+  ],  
+  "authors": [
+    {
+      "name": "Andy Potanin",
+      "homepage": "http://usabilitydynamics.com"
+    },
+    {
+      "name": "Maxim Peshkov",
+      "email": "maxim.peshkov@usabilitydynamics.com",
+      "homepage": "http://usabilitydynamics.com",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.3",
+    "usabilitydynamics/lib-utility": "*"
+  },
+  "require-dev": {
+    "phpmd/phpmd": "master",
+    "squizlabs/php_codesniffer": "master",
+    "sebastian/phpcpd": "master",
+    "usabilitydynamics/lib-wp-phpunit": "master",
+    "codeclimate/php-test-reporter": "dev-master"
+  },
+  "extra": {
+    "component": {}
+  },  
+  "autoload": {
+    "classmap": [ "lib" ]
+  }
+}
