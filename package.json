@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-scaffold-module": "git://github.com/UsabilityDynamics/grunt-scaffold-module"
+    "grunt-scaffold-module": "git://github.com/UsabilityDynamics/grunt-scaffold-module",
+    "should": "~4.0.4"
   },
   "scripts": {
     "test": "mocha --ui exports --reporter list",
